@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title></title>
+  </head>
+  <style>
+    .child{
+        background-color: lightcoral;
+        border: 2px solid red;
+        padding: 20px;
+    }
+    .parent{
+        display: grid;
+        grid-template-rows: 200px 400px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 800px 300px 500px;
+        gap: 50px;
+        
+
+    }
+  </style>
+  <body>
+        <!-- div.parent>div.child*12>h2{Child $} -->
+        <div class="parent">
+            <div class="child">
+                <h2>Child 1</h2>
+            </div>
+            <div class="child">
+                <h2>Child 2</h2>
+            </div>
+            <div class="child">
+                <h2>Child 3</h2>
+            </div>
+            <div class="child">
+                <h2>Child 4</h2>
+            </div>
+            <div class="child">
+                <h2>Child 5</h2>
+            </div>
+            <div class="child">
+                <h2>Child 6</h2>
+            </div>
+            <div class="child">
+                <h2>Child 7</h2>
+            </div>
+            <div class="child">
+                <h2>Child 8</h2>
+            </div>
+            <div class="child">
+                <h2>Child 9</h2>
+            </div>
+            <div class="child">
+                <h2>Child 10</h2>
+            </div>
+            <div class="child">
+                <h2>Child 11</h2>
+            </div>
+            <div class="child">
+                <h2>Child 12</h2>
+            </div>
+
+    </div>
+  </body>
+</html>
