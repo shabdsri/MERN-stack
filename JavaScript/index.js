@@ -1,6 +1,6 @@
 console.log('Hello JavaScript');
 
-a = 46;
+a = 54;
 console.log(a);
 console.log(typeof(a));
 
