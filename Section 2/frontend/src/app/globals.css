@@ -1,0 +1,7 @@
+@import "tailwindcss";
+.btn{
+    background-color: blueviolet;
+    color: wheat;
+    border-radius: 10px;
+    padding: 10px;
+}
