@@ -10,7 +10,7 @@ const EventHandling = () => {
         box.style.left = e.clientX + 'px';
         box.style.top = e.clientY + 'px';
      }}>
-        <div className='bg-yellow-200 size-8 absolute' id='box'></div>
+        <div className='bg-yellow-100 size-8 absolute' id='box'></div>
       <h1 className='text-center text-3xl font-bold'>Event Handling</h1>
       <hr />
       <div className='container mx-auto'>
