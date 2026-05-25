@@ -1,6 +1,27 @@
 'use client'
 import { useFormik } from 'formik';
 import React from 'react'
+import * as Yup from 'yup';
+ 
+ const SignupSchema = Yup.object().shape({
+   name: Yup.string()
+     .min(2, 'Too Short!')
+     .max(50, 'Too Long!')
+     .required('Required'),
+   email: Yup.string()
+     .email('Invalid email')
+     .required('Required'),
+   password : Yup.string()
+      .required('Password is required')
+      .matches(/[a-z]/ , 'Must contain lowercase letter')
+      .matches(/[A-Z]/ , 'Must contain uppercase letter') 
+      .matches(/[0-]9/ , 'Must contain digits') 
+      .matches(/\W/ , 'Must contain special characters') 
+      .min( 6 , 'min 6 characters are required'),
+   confirmPassword : Yup.string()
+      .required('Confirm Password is required')
+      .oneOf([null , Yup.ref('password')] , 'Confirm password must match')
+ });
 
 const SignUp = () => {
 
@@ -15,7 +36,8 @@ const SignUp = () => {
 
       console.log(values);
       // Send values to Backend       }
-    }
+    },
+    validationSchema: SignupSchema
   });
 
   return (
@@ -65,7 +87,12 @@ const SignUp = () => {
                     </svg>
                   </div>
                 </div>
-                <p className="hidden text-xs text-red-600 mt-2" id="email-error">Please include a valid email address so we can get back to you</p>
+                {
+
+                  (signupForm.touched.name && signupForm.errors.name) && 
+                  (<p className="text-xs text-red-600 mt-2" id="name-error">{signupForm.errors.name}</p>)
+                }
+               
               </div>
               {/* End Form Group */}
 
@@ -83,7 +110,11 @@ const SignUp = () => {
                     </svg>
                   </div>
                 </div>
-                <p className="hidden text-xs text-red-600 mt-2" id="email-error">Please include a valid email address so we can get back to you</p>
+                {
+
+                  (signupForm.touched.email && signupForm.errors.email) && 
+                  (<p className="text-xs text-red-600 mt-2" id="name-error">{signupForm.errors.email}</p>)
+                }
               </div>
               {/* End Form Group */}
 
@@ -104,13 +135,17 @@ const SignUp = () => {
                     </svg>
                   </div>
                 </div>
-                <p className="hidden text-xs text-red-600 mt-2" id="password-error">8+ characters required</p>
+                {
+
+                  (signupForm.touched.password && signupForm.errors.password) && 
+                  (<p className="text-xs text-red-600 mt-2" id="name-error">{signupForm.errors.password}</p>)
+                }
               </div>
               {/* End Form Group */}
 
               {/* Form Group */}
               <div>
-                <label htmlFor="confirm-password" className="block text-sm mb-2 text-gray-800">Confirm Password</label>
+                <label htmlFor="confirmpassword" className="block text-sm mb-2 text-gray-800">Confirm Password</label>
                 <div className="relative">
                   <input type="password" id="confirmPassword" name="confirmPassword"
                     onChange={signupForm.handleChange}
@@ -122,7 +157,11 @@ const SignUp = () => {
                     </svg>
                   </div>
                 </div>
-                <p className="hidden text-xs text-red-600 mt-2" id="confirm-password-error">Password does not match the password</p>
+                {
+
+                  (signupForm.touched.confirmPassword && signupForm.errors.confirmPassword) && 
+                  (<p className="text-xs text-red-600 mt-2" id="name-error">{signupForm.errors.confirmPassword}</p>)
+                }
               </div>
               {/* End Form Group */}
 
