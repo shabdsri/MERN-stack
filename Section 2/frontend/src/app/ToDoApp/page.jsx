@@ -44,7 +44,7 @@ const ToDoApp = () => {
                 <div className='p-4 border-t'>
                     {
                         taskList.length === 0 ? 
-                        (<p className='font-bold text-center text-gray-600 text-xl'>No ToDo's to show 😂...</p>)
+                        (<p className='font-bold text-center text-gray-500 text-xl'>No ToDo's to show 😂...</p>)
                         : ( taskList.map(( obj , index  ) => {
                             return (  <div key={index} className='border rounded-lg p-4 mb-6 flex justify-between items-center'>
                                 
