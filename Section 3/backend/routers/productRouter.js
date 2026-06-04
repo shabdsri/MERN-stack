@@ -31,13 +31,27 @@ router.get( '/getall', (req,res) =>{
 
 });
 
-router.put( '/update', (req,res) =>{
-    res.send('response from user update');
+router.put( '/update/:id', (req,res) =>{
+     Model.findByIdAndUpdate(req.params.id , req.body, {new : true})
+      .then((result) =>{
+            res.status(200).json(result);
+        })
+        .catch((err) =>{
+            console.log(err);
+            res.status(200).json(err);
+        })
 
 });
 
-router.delete( '/delete', (req,res) =>{
-    res.send('response from user delete');
+router.delete( '/delete/:id', (req,res) =>{
+    Model.findByIdAndDelete(req.params.id , req.body, {new : true})
+      .then((result) =>{
+            res.status(200).json(result);
+        })
+        .catch((err) =>{
+            console.log(err);
+            res.status(200).json(err);
+        })
 
 });
 
