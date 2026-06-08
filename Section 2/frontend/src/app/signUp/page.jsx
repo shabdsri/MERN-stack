@@ -1,4 +1,5 @@
 'use client'
+import axios from 'axios';
 import { useFormik } from 'formik';
 import React from 'react'
 import * as Yup from 'yup';
@@ -15,7 +16,7 @@ import * as Yup from 'yup';
       .required('Password is required')
       .matches(/[a-z]/ , 'Must contain lowercase letter')
       .matches(/[A-Z]/ , 'Must contain uppercase letter') 
-      .matches(/[0-]9/ , 'Must contain digits') 
+      .matches(/[0-9]/ , 'Must contain digits') 
       .matches(/\W/ , 'Must contain special characters') 
       .min( 6 , 'min 6 characters are required'),
    confirmPassword : Yup.string()
@@ -32,10 +33,20 @@ const SignUp = () => {
       password: '',
       confirmPassword: ''
     },
-    onSubmit: (values) => {
+    onSubmit: async(values) => {
 
       console.log(values);
-      // Send values to Backend       }
+
+      // sending a request
+      const res = await axios.post('http://localhost:5000/user/add' , values)
+      
+      if(res.status ===200){
+       
+        
+
+      }
+        
+        // Send values to Backend       
     },
     validationSchema: SignupSchema
   });
