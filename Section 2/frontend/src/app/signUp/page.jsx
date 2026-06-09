@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
 import React from 'react'
+import toast from 'react-hot-toast';
 import * as Yup from 'yup';
  
  const SignupSchema = Yup.object().shape({
@@ -41,10 +42,9 @@ const SignUp = () => {
       const res = await axios.post('http://localhost:5000/user/add' , values)
       
       if(res.status ===200){
-       
-        
-
-      }
+        toast.success('SignUp successful')
+        }
+        else toast.error('SignUp Failed')
         
         // Send values to Backend       
     },
