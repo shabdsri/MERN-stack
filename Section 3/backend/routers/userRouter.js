@@ -12,7 +12,7 @@ router.post( '/add', (req,res) =>{
     })
     .catch((err) =>{
         console.log(err);
-        res.status(200).json(err);
+        res.status(500).json(err);
     })
     
     // res.send('response from user add');
@@ -26,7 +26,7 @@ router.get( '/getall', (req,res) =>{
     })
     .catch((err) =>{
         console.log(err);
-        res.status(200).json(err);
+        res.status(500).json(err);
     })
 
 });
@@ -38,7 +38,7 @@ router.get('/getbycity/:city' , (req,res) => {
     })
     .catch((err) =>{
         console.log(err);
-        res.status(200).json(err);
+        res.status(500).json(err);
     })
 });
 
@@ -49,7 +49,7 @@ router.get('/getbyid/:id' , (req,res) => {
     })
     .catch((err) =>{
         console.log(err);
-        res.status(200).json(err);
+        res.status(500).json(err);
     })
 });
 
@@ -63,7 +63,7 @@ router.put( '/update/:id', (req,res) =>{
     })
     .catch((err) =>{
         console.log(err);
-        res.status(200).json(err);
+        res.status(500).json(err);
     })
 });
 
@@ -77,9 +77,21 @@ router.delete( '/delete/:id', (req,res) =>{
     })
     .catch((err) =>{
         console.log(err);
-        res.status(200).json(err);
+        res.status(500).json(err);
     })
 });
+
+router.post('/authenticate' , (req,res) =>{
+    const {email , password} = req.body;
+    Model.findOne({email , password})
+    .then((result) =>{
+        res.status(200).json(result);
+    })
+    .catch((err) =>{
+        console.log(err);
+        res.status(500).json(err);
+    });
+})
 
 
 module.exports = router;
