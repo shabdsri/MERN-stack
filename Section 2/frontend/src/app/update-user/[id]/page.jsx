@@ -36,7 +36,7 @@ const UpdateUser = () => {
             <h3 id="hs-modal-signin-label" className="block text-2xl font-bold text-gray-800">Sign up</h3>
             <p className="mt-2 text-sm text-gray-600">
               Already have an account?
-              <a className="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium" href="#">
+              <a className="text-blue-800 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium" href="#">
                 Sign in here
               </a>
             </p>
